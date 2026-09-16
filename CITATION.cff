@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use these workflows, cite the repository and the upstream algorithm papers referenced by each workflow."
+title: "quantum-workflows"
+type: software
+authors:
+  - family-names: Lisa
+    given-names: Nyameko
+repository-code: "https://github.com/nyameko/quantum-workflows"
+license: Apache-2.0
+version: 0.1.0
+date-released: 2026-09-16

@@ -1,0 +1,12 @@
+{
+  "workflow": "trotterized-dynamics",
+  "executor": "aer",
+  "qubits": 6,
+  "coupling": 1.0,
+  "field": 0.7,
+  "final_time": 3.0,
+  "time_points": 13,
+  "trotter_steps": 4,
+  "shots": 4096,
+  "seed": 42
+}

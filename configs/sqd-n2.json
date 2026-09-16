@@ -1,0 +1,13 @@
+{
+  "workflow": "sqd-n2",
+  "executor": "statevector",
+  "molecule": "N2",
+  "bond_length_angstrom": 1.0,
+  "basis": "sto-6g",
+  "shots": 20000,
+  "samples_per_batch": 1000,
+  "num_batches": 3,
+  "max_iterations": 5,
+  "max_dim": 50,
+  "seed": 42
+}
