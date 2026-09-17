@@ -304,3 +304,9 @@ A workflow is not complete merely because a notebook ran once. It must have:
 
 Apache-2.0. Individual upstream packages and scientific datasets retain their own licenses and
 citation requirements.
+
+## Agent integration
+
+[Agent Control Plane boundary and roadmap](docs/agent-control-plane-integration.md)
+defines future authorized submissions and provenance. Phase 1 adds infrastructure
+diagnostics only; scientific runners remain independent.
