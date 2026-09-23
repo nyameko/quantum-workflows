@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows: [CI]
     types: [completed]
+    branches: [dev, main]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +16,8 @@ jobs:
     if: >-
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.head_branch == 'main')
+      github.event.workflow_run.event == 'push' &&
+      contains(fromJSON('["dev","main"]'), github.event.workflow_run.head_branch))
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -38,6 +40,6 @@ jobs:
           build-args: VCS_REF=${{ github.event.workflow_run.head_sha || github.sha }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/quantum-workflows-${{ matrix.runner }}:sha-${{ github.event.workflow_run.head_sha || github.sha }}
-            ghcr.io/${{ github.repository_owner }}/quantum-workflows-${{ matrix.runner }}:main
+            ghcr.io/${{ github.repository_owner }}/quantum-workflows-${{ matrix.runner }}:${{ github.event.workflow_run.head_branch || github.ref_name }}
           cache-from: type=gha,scope=${{ matrix.runner }}
           cache-to: type=gha,mode=max,scope=${{ matrix.runner }}

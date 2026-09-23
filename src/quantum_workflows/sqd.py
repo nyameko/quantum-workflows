@@ -28,7 +28,7 @@ def _connectivity_for_backend(backend: Any, requested: str) -> str:
         return requested
     try:
         family = backend.configuration().processor_type["family"]
-    except (AttributeError, KeyError, TypeError):
+    except AttributeError, KeyError, TypeError:
         return "heavy-hex"
     mapping = {"Heron": "heavy-hex", "Nighthawk": "square"}
     if family not in mapping:

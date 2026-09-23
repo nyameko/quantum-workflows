@@ -33,7 +33,7 @@ def _git_value(*args: str) -> str | None:
             text=True,
             timeout=2,
         ).stdout.strip()
-    except (FileNotFoundError, subprocess.SubprocessError):
+    except FileNotFoundError, subprocess.SubprocessError:
         return None
 
 
