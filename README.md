@@ -336,3 +336,7 @@ citation requirements.
 [Agent Control Plane boundary and roadmap](docs/agent-control-plane-integration.md)
 defines future authorized submissions and provenance. Phase 1 adds infrastructure
 diagnostics only; scientific runners remain independent.
+
+## Public topology policy
+
+This repository may describe infrastructure **roles, trust boundaries and logical execution targets**, but it must not duplicate the authoritative live network map. Concrete internal CIDRs, fixed addresses, VPN peer mappings, provider IDs and environment node counts belong in protected `infra-hpc-qc-k8s` environment data. Public examples use semantic role names/placeholders instead.
