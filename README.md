@@ -77,6 +77,32 @@ Kubernetes hosts control-plane services and the OCI registry. Slurm executes HPC
 Apptainer on compute nodes. A container image is a reproducible artifact, not a reason to place
 multi-node HPC execution inside Kubernetes.
 
+## Jupyter workbench relationship
+
+The normal notebook server is **not** the HPC allocation. JupyterHub should usually place the researcher in a cheap Kubernetes workbench while `quantum-workflows` submits expensive stages only when needed.
+
+```text
+KubeSpawner workbench
+      |
+      | qw / execution client
+      v
+quantum-workflows durable run
+      |
+      +--> Slurm CPU stage -> release
+      +--> Slurm GPU stage -> release
+      +--> QPU stage -> release
+      +--> postprocess stage -> release
+      |
+      v
+results + provenance
+```
+
+The workflow must outlive the notebook process. Closing a browser, culling an idle workbench or restarting JupyterHub must not cancel an already-authorized batch/QPU workflow unless policy explicitly says so.
+
+BatchSpawner remains useful for workflows that genuinely need an interactive HPC kernel, but those sessions are an explicit scarce-resource mode rather than the default path.
+
+Logical execution targets such as `qiskit-aer-large` should be resolved through platform policy rather than requiring ordinary notebook users to know Slurm partitions, QoS names or physical GPU nodes.
+
 ## Quick start
 
 Python 3.11–3.13 is supported.
