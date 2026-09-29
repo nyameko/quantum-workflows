@@ -160,3 +160,29 @@ in logs/traces/catalog records, not unbounded Prometheus labels.
 
 Examples: a generic QRMI D-Wave adapter belongs upstream; an Astro result page belongs in the
 platform; a Rocky Linux SPANK role belongs in infrastructure; an SQD lesson belongs here.
+
+## Interactive workbench versus execution lifecycle
+
+The user-facing Jupyter process and the scientific execution lifecycle are separate concerns.
+
+### Default
+
+A KubeSpawner notebook pod is a lightweight client with the user's persistent home, selected software workbench and authenticated execution client. It may perform trivial local checks, but substantial simulation/training/postprocessing work is submitted as a durable workflow/job.
+
+### Durable workflow state
+
+A workflow run owns stage state independently of notebook lifetime:
+
+```text
+PREPROCESS -> SIMULATE -> WAIT_QPU -> QPU_RUN -> POSTPROCESS -> COMPLETE
+```
+
+Each stage records its immutable environment, requested logical resource, resolved scheduler/provider placement, timestamps, identifiers, result references and release outcome. Resource acquisition is per stage. Do not keep an H200, large CPU allocation or QPU reservation alive merely because a notebook is open.
+
+### Logical targets
+
+Clients ask for logical targets such as `qiskit-aer-large`, `pennylane-lightning-h200` or a provider-capability class. The platform/execution layer resolves these to Slurm/QPU details under entitlement and quota policy. The workflow manifest records the resolved placement for provenance without requiring the researcher to program against physical partitions.
+
+### Interactive HPC exception
+
+BatchSpawner or an equivalent remote-kernel path is retained for workloads that need an interactive kernel inside an HPC allocation. Such sessions have explicit walltime/concurrency policy and are not the default execution architecture.
