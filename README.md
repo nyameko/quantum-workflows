@@ -77,6 +77,32 @@ Kubernetes hosts control-plane services and the OCI registry. Slurm executes HPC
 Apptainer on compute nodes. A container image is a reproducible artifact, not a reason to place
 multi-node HPC execution inside Kubernetes.
 
+## Jupyter workbench relationship
+
+The normal notebook server is **not** the HPC allocation. JupyterHub should usually place the researcher in a cheap Kubernetes workbench while `quantum-workflows` submits expensive stages only when needed.
+
+```text
+KubeSpawner workbench
+      |
+      | qw / execution client
+      v
+quantum-workflows durable run
+      |
+      +--> Slurm CPU stage -> release
+      +--> Slurm GPU stage -> release
+      +--> QPU stage -> release
+      +--> postprocess stage -> release
+      |
+      v
+results + provenance
+```
+
+The workflow must outlive the notebook process. Closing a browser, culling an idle workbench or restarting JupyterHub must not cancel an already-authorized batch/QPU workflow unless policy explicitly says so.
+
+BatchSpawner remains useful for workflows that genuinely need an interactive HPC kernel, but those sessions are an explicit scarce-resource mode rather than the default path.
+
+Logical execution targets such as `qiskit-aer-large` should be resolved through platform policy rather than requiring ordinary notebook users to know Slurm partitions, QoS names or physical GPU nodes.
+
 ## Quick start
 
 Python 3.11–3.13 is supported.
@@ -310,3 +336,11 @@ citation requirements.
 [Agent Control Plane boundary and roadmap](docs/agent-control-plane-integration.md)
 defines future authorized submissions and provenance. Phase 1 adds infrastructure
 diagnostics only; scientific runners remain independent.
+
+## Public topology policy
+
+This repository may describe infrastructure **roles, trust boundaries and logical execution targets**, but it must not duplicate the authoritative live network map. Concrete internal CIDRs, fixed addresses, VPN peer mappings, provider IDs and environment node counts belong in protected `infra-hpc-qc-k8s` environment data. Public examples use semantic role names/placeholders instead.
+
+## Public repository topology policy
+
+Public documentation describes **roles, trust boundaries, interfaces and example topology**, not the authoritative live internal network map. Real CIDRs, fixed host addresses, VPN peer mappings, provider resource IDs and environment-specific routing belong in protected infrastructure inventory/private variables. Examples should use semantic placeholders such as `<MGMT_CIDR>`, `<K8S_API_VIP>`, `<SLURM_CONTROLLER_IP>` or private DNS abstractions rather than production addresses.
