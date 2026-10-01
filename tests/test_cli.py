@@ -12,6 +12,7 @@ def test_default_sqd_is_credential_free() -> None:
     assert args.executor == "statevector"
     assert args.backend is None
 
+
 def test_default_cpu_smoke_is_credential_free() -> None:
     args = build_parser().parse_args(["cpu-smoke"])
     assert args.iterations == 100_000
