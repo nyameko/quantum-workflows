@@ -16,6 +16,6 @@ module load apptainer
 srun apptainer exec \
   --bind "${result_root}:/results" \
   "${QUANTUM_WORKFLOWS_IMAGE}" \
-  cpu-smoke \
+  qw cpu-smoke \
     --iterations "${CPU_SMOKE_ITERATIONS:-100000}" \
     --output /results
