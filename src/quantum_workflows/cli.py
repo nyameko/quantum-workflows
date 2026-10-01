@@ -22,6 +22,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     commands = parser.add_subparsers(dest="command", required=True)
 
+    cpu_smoke = commands.add_parser(
+        "cpu-smoke",
+        help="Run a credential-free CPU/Slurm execution-path smoke test",
+    )
+    cpu_smoke.add_argument("--iterations", type=int, default=100_000)
+    cpu_smoke.add_argument("--output", type=_output_path, default=_output_path("results"))
+
     hello = commands.add_parser("hello", help="Run the IBM-compatible Bell handshake")
     hello.add_argument("--executor", choices=("aer", "ibm", "qrmi"), default="aer")
     hello.add_argument("--backend", help="Pin an IBM backend; default selects least busy")
@@ -59,7 +66,14 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    if args.command == "hello":
+    if args.command == "cpu-smoke":
+        from .cpu_smoke import run_cpu_smoke
+
+        summary, directory = run_cpu_smoke(
+            iterations=args.iterations,
+            output=args.output,
+        )
+    elif args.command == "hello":
         from .hello import run_hello
 
         summary, directory = run_hello(
