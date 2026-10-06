@@ -29,9 +29,10 @@ Prometheus/Grafana                            │
                                          remote/local QPU
 ```
 
-JupyterHub is a platform experience deployed through Argo CD, while its `SlurmSpawner` single-user
-server executes in a real Slurm allocation. Batch workflows can be submitted from that interactive
-session without holding the notebook's GPU allocation during a remote provider queue.
+JupyterHub is a platform experience deployed through Argo CD. The default path is a lightweight
+KubeSpawner workbench; durable CPU/GPU/QPU work is submitted separately through Quantum Platform
+and Slurm/provider adapters. BatchSpawner remains an explicit secondary mode when the notebook
+kernel itself must run inside a scarce Slurm allocation.
 
 ## Runner contract
 
@@ -186,3 +187,57 @@ Clients ask for logical targets such as `qiskit-aer-large`, `pennylane-lightning
 ### Interactive HPC exception
 
 BatchSpawner or an equivalent remote-kernel path is retained for workloads that need an interactive kernel inside an HPC allocation. Such sessions have explicit walltime/concurrency policy and are not the default execution architecture.
+
+
+## Validated M3 execution contract
+
+The first production vertical slice has now been proven:
+
+```text
+Quantum Platform
+  ↓
+restricted SSH gateway
+  ↓
+Slurm
+  ↓
+Apptainer
+  ↓
+qw cpu-smoke
+  ↓
+structured result + provenance
+```
+
+Reference acceptance:
+
+```text
+Slurm job:   15
+partition:   cpu-small
+state:       COMPLETED
+exit code:   0:0
+workflow:    cpu-smoke
+passed:      true
+```
+
+This establishes the execution contract that later CPU, MPI, A100, H200, emulator and QPU workflows should preserve.
+
+## HPL and heterogeneous benchmark progression
+
+A flagship systems curriculum should progress through:
+
+```text
+small CPU HPL
+  ↓
+large single-node HPL
+  ↓
+multi-node MPI/HPL
+  ↓
+A100 HPL
+  ↓
+H200 HPL
+  ↓
+multi-H200 HPL
+```
+
+Each experiment should emit the same kind of structured parameters, environment metadata, scheduler/provider state and result provenance as quantum workflows.
+
+This track becomes a natural persistent-agent project: an agent can compare previous parameter sets and benchmark results while the user moves between Jupyter, the portal and an SSH/TUI client.

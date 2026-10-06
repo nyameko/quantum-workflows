@@ -1,4 +1,13 @@
-# Tutorials
+# Quantum Workflows Tutorials
+
+Start with the repository-level [Quick Start](../QUICK_START.md), [Learning Path](../LEARNING_PATH.md) and [Scientific Environments](../ENVIRONMENTS.md).
+
+## Beginner lab
+
+- [Intro Quantum Computing](../../labs/01-intro-quantum-computing/Intro_QC_Demo.ipynb) — qubits, superposition, measurement, interference, Bell states and local Aer.
+
+## Advanced reference tutorials
+
 
 The first learning path follows the same progression used by the executable workflows:
 
