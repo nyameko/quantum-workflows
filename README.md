@@ -3,13 +3,14 @@
 Vendor-neutral reference workflows for **hybrid quantum-classical computing** and
 **quantum-centric supercomputing (QCSC)**.
 
-This repository is the executable research and teaching layer of a three-repository system:
+This repository is the executable research and teaching layer of a four-repository system:
 
 | Repository | Question it answers | Owns |
 | --- | --- | --- |
 | [`infra-hpc-qc-k8s`](https://github.com/nyameko/infra-hpc-qc-k8s) | How is the facility built and operated? | OpenStack, Terraform, Ansible, Kubernetes, Slurm, QRMI/SPANK, MPI, GPUs, storage, observability |
 | [`quantum-platform`](https://github.com/nyameko/quantum-platform) | How do people securely use the facility? | identity, programmes, portal, JupyterHub experience, backend catalog, credentials, jobs and results |
 | **`quantum-workflows`** | What scientific work can the facility execute and reproduce? | runners, algorithms, tutorials, benchmarks, Slurm entry points, result and provenance contracts |
+| [`agent-control-plane`](https://github.com/nyameko/agent-control-plane) | How do persistent agents carry context across portal/Jupyter/SSH/editor surfaces? | conversations, projects, memory, skills, task/run orchestration and runtime adapters |
 
 The name is intentionally broader than “QC”. The project includes gate-based quantum computing,
 Hamiltonian simulation, quantum emulation, quantum-inspired algorithms and neural networks,
@@ -181,6 +182,16 @@ sbatch --gres=qpu:1 --qpu=ibm_resource_name slurm/hello-ibm.sbatch
 The SPANK plugin injects `QRMI_JOB_QPU_RESOURCES` and `QRMI_JOB_QPU_TYPES`; application source does
 not contain a physical backend name or provider token.
 
+## Introductory lab
+
+The beginner entry point is:
+
+```text
+labs/01-intro-quantum-computing/Intro_QC_Demo.ipynb
+```
+
+It covers single-qubit state, superposition, measurement, interference, entanglement and Aer simulation before users move into the advanced reference workflows.
+
 ## Reference workflows
 
 ### 1. Trotterized transverse-field Ising dynamics
@@ -318,6 +329,10 @@ A workflow is not complete merely because a notebook ran once. It must have:
 - a tutorial that explains both the physics/algorithm and the systems path.
 
 ## Documentation
+
+- [Quick Start](docs/QUICK_START.md)
+- [Learning and Research Path](docs/LEARNING_PATH.md)
+- [Scientific Environments](docs/ENVIRONMENTS.md)
 
 - [Architecture and contracts](docs/ARCHITECTURE.md)
 - [IBM QPU handshake](docs/tutorials/01-IBM-QPU-HANDSHAKE.md)
