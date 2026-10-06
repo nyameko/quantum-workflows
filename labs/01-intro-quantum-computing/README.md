@@ -1,6 +1,6 @@
 # Lab 01 — A Very Basic Introduction to Quantum Computing
 
-This introductory lab is adapted from the CHPC SCC `Day4_QC_Demo.ipynb`.
+This introductory lab is adapted from the CHPC Student Cluster Competition quantum-computing demonstration notebook.
 It introduces classical bits, a single qubit, superposition, measurement,
 interference, two-qubit entanglement and a coin-flip analogy using Qiskit and
 Qiskit Aer.
@@ -26,7 +26,7 @@ python -m ipykernel install \
   --display-name "Python (Qiskit Intro)"
 ```
 
-Then open `Day4_QC_Demo.ipynb` and select **Python (Qiskit Intro)** as the
+Then open `Intro_QC_Demo.ipynb` and select **Python (Qiskit Intro)** as the
 kernel.
 
 You do not need to install JupyterLab inside this venv: JupyterLab is already
