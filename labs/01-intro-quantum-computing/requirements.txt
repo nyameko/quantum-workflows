@@ -1,0 +1,6 @@
+# Introductory Qiskit lab runtime.
+# Keep this independent of the quantum-workflows package's Python 3.14 runtime.
+qiskit[visualization]>=2.5,<3
+qiskit-aer>=0.17,<0.18
+matplotlib>=3.9,<4
+ipykernel>=6,<8
