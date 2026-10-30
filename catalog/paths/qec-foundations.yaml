@@ -1,0 +1,61 @@
+# DRAFT — educational catalogue seed. Not published or approved.
+schema_version: "0.1"
+pathway:
+  id: "qec-foundations"
+  title: "Quantum Error Correction: From Bell States to Logical Qubits"
+  version: "0.1.0"
+  status: "draft"
+  recommended_audience: "beginner-to-graduate"
+  recommended_prerequisites:
+    - "python-basics"
+    - "complex-vectors"
+  revision:
+    repository: "nyameko/quantum-workflows"
+    # Must be filled with an immutable Git SHA prior to publication:
+    commit_sha: null
+  default_execution: "credential-free-cpu"
+  recommended_weeks: 4
+  modules:
+    - id: "qec-00-bell-and-measurement"
+      week: 1
+      title: "Qubits, measurement and Bell states"
+      outcomes:
+        - "Build, measure and interpret a Bell state"
+        - "Explain the distinction between physical and logical qubits"
+      notebook:
+        path: "labs/01-intro-quantum-computing/Intro_QC_Demo.ipynb"
+        availability: "in-repository"
+      evidence: "learner-owned executed notebook plus measurement histogram and provenance"
+    - id: "qec-01-noise-channels"
+      week: 2
+      title: "Pauli and non-Pauli noise"
+      notebook:
+        path: "labs/03-zero-to-hero-qec/notebooks/01_noise_channels.ipynb"
+        availability: "staged-not-yet-committed"
+      outcomes:
+        - "Compare bit-flip and phase-flip models"
+      references:
+        - "https://www.preskill.caltech.edu/ph229/"
+    - id: "qec-02-stabilizers-and-correction"
+      week: 3
+      title: "Syndromes, stabilisers and repetition codes"
+      notebook:
+        path: "labs/03-zero-to-hero-qec/notebooks/03_stabilizers.ipynb"
+        availability: "staged-not-yet-committed"
+      outcomes:
+        - "Detect a simple Pauli error without measuring logical information"
+    - id: "qec-03-logical-benchmarks"
+      week: 4
+      title: "Surface and bicycle codes: literature and reproducible comparisons"
+      notebook:
+        path: "labs/03-zero-to-hero-qec/notebooks/08_bicycle_codes.ipynb"
+        availability: "staged-not-yet-committed"
+      outcomes:
+        - "Describe code parameters and separate a claimed distance from an independently measured result"
+        - "Propose a valid logical error-rate benchmark"
+      references:
+        - "https://doi.org/10.1038/s41586-024-07107-7"
+  scientific_review_required: true
+  publication_requires_all_artifacts_present: true
+  remote_qpu_execution: "disabled-by-default"
+  progress_policy: "record evidence; do not infer completion from chat"
