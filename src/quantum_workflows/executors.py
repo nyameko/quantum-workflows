@@ -28,6 +28,8 @@ def sample_circuits(
     """Sample circuits on Aer, IBM Quantum Compute Service, or QRMI."""
     if executor == "aer":
         return _sample_aer(circuits, shots=shots, seed=seed)
+    if executor == "aer-gpu":
+        return _sample_aer(circuits, shots=shots, seed=seed, gpu=True)
     if executor == "ibm":
         return _sample_ibm(circuits, shots=shots, backend_name=backend_name)
     if executor == "qrmi":
@@ -35,16 +37,24 @@ def sample_circuits(
     raise ValueError(f"unsupported sampling executor: {executor}")
 
 
-def _sample_aer(circuits: Sequence[Any], *, shots: int, seed: int) -> SampleBatch:
+def _sample_aer(
+    circuits: Sequence[Any], *, shots: int, seed: int, gpu: bool = False
+) -> SampleBatch:
     from qiskit import transpile
     from qiskit_aer import AerSimulator
 
-    backend = AerSimulator(seed_simulator=seed)
+    options = {"device": "GPU", "method": "statevector"} if gpu else {}
+    backend = AerSimulator(seed_simulator=seed, **options)
+    if gpu and "GPU" not in backend.available_devices():
+        raise RuntimeError(
+            "Qiskit Aer GPU is unavailable. Install qiskit-aer-gpu on a CUDA-enabled "
+            "A100/H200 runner and verify GPU visibility; CPU fallback is explicit (--executor aer)."
+        )
     isa = transpile(list(circuits), backend=backend, optimization_level=1, seed_transpiler=seed)
     job = backend.run(isa, shots=shots)
     result = job.result()
     counts = [_normalize_counts(result.get_counts(i)) for i in range(len(isa))]
-    return SampleBatch(counts, backend.name, job.job_id(), isa)
+    return SampleBatch(counts, "aer-gpu" if gpu else backend.name, job.job_id(), isa)
 
 
 def _sample_ibm(circuits: Sequence[Any], *, shots: int, backend_name: str | None) -> SampleBatch:
