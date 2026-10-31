@@ -46,9 +46,7 @@ def test_lightning_hello_emits_the_same_scientific_contract(monkeypatch, tmp_pat
         "quantum_workflows.lightning.sample_bell",
         lambda *, executor, shots, seed: ({"00": shots // 2, "11": shots // 2}, "lightning.qubit"),
     )
-    summary, directory = run_hello(
-        executor="lightning-cpu", shots=64, output=tmp_path, seed=11
-    )
+    summary, directory = run_hello(executor="lightning-cpu", shots=64, output=tmp_path, seed=11)
     manifest = json.loads((directory / "manifest.json").read_text())
     assert summary["passed"]
     assert summary["provider_job_id"] is None
@@ -63,9 +61,7 @@ def test_lightning_hello_emits_the_same_scientific_contract(monkeypatch, tmp_pat
 
 def test_lightning_rejects_remote_backend_override(tmp_path):
     with pytest.raises(ValueError, match="only supported"):
-        run_hello(
-            executor="lightning-cpu", shots=64, output=tmp_path, backend="ibm_example"
-        )
+        run_hello(executor="lightning-cpu", shots=64, output=tmp_path, backend="ibm_example")
 
 
 def test_aer_gpu_is_opt_in(monkeypatch):
@@ -89,8 +85,6 @@ def test_aer_gpu_fails_if_not_supported(monkeypatch):
         def available_devices(self):
             return ["CPU"]
 
-    monkeypatch.setitem(
-        sys.modules, "qiskit_aer", SimpleNamespace(AerSimulator=CpuOnlyBackend)
-    )
+    monkeypatch.setitem(sys.modules, "qiskit_aer", SimpleNamespace(AerSimulator=CpuOnlyBackend))
     with pytest.raises(RuntimeError, match="GPU is unavailable"):
         executors.sample_circuits([], executor="aer-gpu", shots=100, seed=5)
