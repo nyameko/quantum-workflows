@@ -106,7 +106,7 @@ Logical execution targets such as `qiskit-aer-large` should be resolved through 
 
 ## Quick start
 
-Python 3.11–3.13 is supported.
+Python 3.14 is supported (see `pyproject.toml` for the authoritative version range).
 
 ```bash
 git clone https://github.com/nyameko/quantum-workflows.git
@@ -143,6 +143,39 @@ The short and long CLI names are equivalent:
 qw --help
 quantum-workflow --help
 ```
+
+## Bell-state execution ladder: CPU → GPU → QPU
+
+The same **Bell correlation acceptance and result-manifest contract** applies to each
+simulator. The underlying SDKs are intentionally not assumed to share a universal
+circuit representation.
+
+```bash
+# CPU / Qiskit Aer (default and credential-free)
+qw hello --executor aer --shots 1024
+
+# CPU / PennyLane Lightning (install once in a Python 3.14 environment)
+python -m pip install -e ".[lightning-cpu]"
+qw hello --executor lightning-cpu --shots 1024
+
+# A100/H200: dedicated CUDA-enabled GPU runner, never the default workbench
+# Install the GPU-enabled Aer build in that runner (replaces CPU-only qiskit-aer).
+python -m pip install qiskit-aer-gpu
+qw hello --executor aer-gpu --shots 1024
+
+# A100/H200 with PennyLane Lightning / cuQuantum
+python -m pip install -e ".[lightning-gpu]"
+qw hello --executor lightning-gpu --shots 1024
+
+# Actual QPU: opt in, existing IBM account and allocation required
+qw hello --executor ibm --shots 1024
+```
+
+GPU selections fail rather than silently falling back to CPU. A two-qubit Bell
+experiment is a correctness demonstration, **not** evidence of GPU speedup.
+Install GPU-enabled packages only in their versioned runner environment;
+Slurm allocation, GPU visibility and CUDA/cuQuantum library compatibility must
+be checked on the actual node. No remote hardware runs during CI.
 
 ## IBM Quantum hardware handshake
 
