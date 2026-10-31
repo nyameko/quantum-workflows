@@ -1,0 +1,37 @@
+{
+  "id": "research.bell-aer",
+  "version": "0.1.0",
+  "status": "proposed",
+  "kind": "scientific_workflow_reference",
+  "display_name": "Bell state — local Aer reproducibility",
+  "description": "Run the existing credential-free Bell correlation demonstration and inspect the science manifest.",
+  "source_path": "src/quantum_workflows/hello.py",
+  "tutorial_path": "labs/01-intro-quantum-computing/Intro_QC_Demo.ipynb",
+  "entrypoint": {
+    "cli": "qw",
+    "subcommand": "hello",
+    "fixed_arguments": [
+      "--executor",
+      "aer",
+      "--shots",
+      "1024",
+      "--seed",
+      "42",
+      "--minimum-correlation",
+      "0.70"
+    ]
+  },
+  "required_capabilities": [
+    "workflow:simulate:cpu"
+  ],
+  "requires_external_credentials": false,
+  "expected_evidence": [
+    "manifest.json",
+    "summary.json"
+  ],
+  "execution_policy": {
+    "remote_execution_enabled": false,
+    "requires_approved_platform_submission": true,
+    "human_review_required_to_enable": true
+  }
+}

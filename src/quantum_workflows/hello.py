@@ -38,11 +38,21 @@ def run_hello(
     try:
         circuit = bell_circuit()
         artifacts.add_circuit(circuit, stage="logical")
-        sampled = sample_circuits(
-            [circuit], executor=executor, shots=shots, backend_name=backend, seed=seed
-        )
-        artifacts.add_circuit(sampled.transpiled_circuits[0], stage="transpiled")
-        counts = sampled.counts[0]
+        if executor in ("lightning-cpu", "lightning-gpu"):
+            if backend is not None:
+                raise ValueError("--backend is only supported for remote IBM/QRMI executors")
+            from .lightning import sample_bell
+
+            counts, backend_used = sample_bell(executor=executor, shots=shots, seed=seed)
+            job_id = None
+        else:
+            sampled = sample_circuits(
+                [circuit], executor=executor, shots=shots, backend_name=backend, seed=seed
+            )
+            artifacts.add_circuit(sampled.transpiled_circuits[0], stage="transpiled")
+            counts = sampled.counts[0]
+            backend_used = sampled.backend
+            job_id = sampled.job_id
         observed = sum(counts.values())
         correlated = counts.get("00", 0) + counts.get("11", 0)
         correlation = correlated / observed if observed else 0.0
@@ -50,8 +60,8 @@ def run_hello(
         summary = {
             "workflow": "hello-ibm",
             "executor": executor,
-            "backend": sampled.backend,
-            "provider_job_id": sampled.job_id,
+            "backend": backend_used,
+            "provider_job_id": job_id,
             "counts": counts,
             "shots_observed": observed,
             "bell_correlation": correlation,
@@ -59,9 +69,13 @@ def run_hello(
             "passed": passed,
         }
         artifacts.set_quantum_metadata(
-            provider="local" if executor == "aer" else "ibm",
-            backend=sampled.backend,
-            job_id=sampled.job_id,
+            provider=(
+                "local"
+                if executor in ("aer", "aer-gpu", "lightning-cpu", "lightning-gpu")
+                else "ibm"
+            ),
+            backend=backend_used,
+            job_id=job_id,
             shots=observed,
         )
         artifacts.write_json("counts.json", counts, data=True)
