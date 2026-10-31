@@ -30,7 +30,11 @@ def build_parser() -> argparse.ArgumentParser:
     cpu_smoke.add_argument("--output", type=_output_path, default=_output_path("results"))
 
     hello = commands.add_parser("hello", help="Run the IBM-compatible Bell handshake")
-    hello.add_argument("--executor", choices=("aer", "ibm", "qrmi"), default="aer")
+    hello.add_argument(
+        "--executor",
+        choices=("aer", "aer-gpu", "lightning-cpu", "lightning-gpu", "ibm", "qrmi"),
+        default="aer",
+    )
     hello.add_argument("--backend", help="Pin an IBM backend; default selects least busy")
     hello.add_argument("--shots", type=int, default=1024)
     hello.add_argument("--minimum-correlation", type=float, default=0.70)
