@@ -69,7 +69,11 @@ def run_hello(
             "passed": passed,
         }
         artifacts.set_quantum_metadata(
-            provider="local" if executor in ("aer", "aer-gpu", "lightning-cpu", "lightning-gpu") else "ibm",
+            provider=(
+                "local"
+                if executor in ("aer", "aer-gpu", "lightning-cpu", "lightning-gpu")
+                else "ibm"
+            ),
             backend=backend_used,
             job_id=job_id,
             shots=observed,
