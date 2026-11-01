@@ -40,8 +40,6 @@ def test_review_candidates_point_to_existing_sources_without_execution_entrypoin
             assert notebook["cells"]
             assert any(cell["cell_type"] == "markdown" for cell in notebook["cells"])
             assert any(cell["cell_type"] == "code" for cell in notebook["cells"])
-            assert (
-                ROOT / item["resource"]["environment_requirements"]
-            ).is_file()
+            assert (ROOT / item["resource"]["environment_requirements"]).is_file()
             assert item["resource"]["upstream_sdks"] == ["qiskit", "qiskit-aer"]
     assert seen == set(expected)
