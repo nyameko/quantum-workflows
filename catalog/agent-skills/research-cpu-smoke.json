@@ -1,31 +1,22 @@
 {
-  "id": "research.cpu-smoke",
-  "version": "0.1.0",
+  "id": "reference.cpu-smoke-provenance",
+  "version": "0.2.0",
   "status": "proposed",
-  "kind": "scientific_workflow_reference",
-  "display_name": "CPU path smoke — reproducible artifacts",
-  "description": "Exercise the existing low-cost, credential-free execution-manifest path. Does not test QPU physics.",
-  "source_path": "src/quantum_workflows/cpu_smoke.py",
-  "tutorial_path": null,
-  "entrypoint": {
-    "cli": "qw",
-    "subcommand": "cpu-smoke",
-    "fixed_arguments": [
-      "--iterations",
-      "10000"
-    ]
+  "kind": "diagnostic_source_reference",
+  "display_name": "CPU result provenance — implementation reference",
+  "description": "Read the existing operational CPU smoke-test source and learn about durable Slurm results; not an introductory quantum computing lesson and not an executable agent skill.",
+  "resource": {
+    "type": "python_source",
+    "path": "src/quantum_workflows/cpu_smoke.py",
+    "upstream_sdks": []
   },
   "required_capabilities": [
-    "workflow:simulate:cpu"
+    "resource:read"
   ],
   "requires_external_credentials": false,
-  "expected_evidence": [
-    "manifest.json",
-    "summary.json"
-  ],
   "execution_policy": {
+    "automatic_code_execution": false,
     "remote_execution_enabled": false,
-    "requires_approved_platform_submission": true,
     "human_review_required_to_enable": true
   }
 }

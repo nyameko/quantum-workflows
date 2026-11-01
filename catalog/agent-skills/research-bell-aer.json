@@ -1,37 +1,30 @@
 {
-  "id": "research.bell-aer",
-  "version": "0.1.0",
+  "id": "learning.quantum-foundations",
+  "version": "0.2.0",
   "status": "proposed",
-  "kind": "scientific_workflow_reference",
-  "display_name": "Bell state — local Aer reproducibility",
-  "description": "Run the existing credential-free Bell correlation demonstration and inspect the science manifest.",
-  "source_path": "src/quantum_workflows/hello.py",
-  "tutorial_path": "labs/01-intro-quantum-computing/Intro_QC_Demo.ipynb",
-  "entrypoint": {
-    "cli": "qw",
-    "subcommand": "hello",
-    "fixed_arguments": [
-      "--executor",
-      "aer",
-      "--shots",
-      "1024",
-      "--seed",
-      "42",
-      "--minimum-correlation",
-      "0.70"
+  "kind": "notebook_reference",
+  "display_name": "Quantum foundations — Qiskit notebook",
+  "description": "Explore classical bits, superposition, Bloch sphere, interference, measurement and Bell-state correlation in a reviewed Jupyter notebook using upstream Qiskit and Qiskit Aer.",
+  "resource": {
+    "type": "jupyter_notebook",
+    "path": "labs/01-intro-quantum-computing/Intro_QC_Demo.ipynb",
+    "environment_requirements": "labs/01-intro-quantum-computing/requirements.txt",
+    "upstream_sdks": [
+      "qiskit",
+      "qiskit-aer"
     ]
   },
+  "learning_outcomes": [
+    "Explain superposition and measurement",
+    "Simulate Bell-state correlation and distinguish it from a CHSH inequality test"
+  ],
   "required_capabilities": [
-    "workflow:simulate:cpu"
+    "resource:read"
   ],
   "requires_external_credentials": false,
-  "expected_evidence": [
-    "manifest.json",
-    "summary.json"
-  ],
   "execution_policy": {
+    "automatic_code_execution": false,
     "remote_execution_enabled": false,
-    "requires_approved_platform_submission": true,
     "human_review_required_to_enable": true
   }
 }
