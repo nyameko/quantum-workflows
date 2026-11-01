@@ -1,0 +1,49 @@
+{
+  "id": "photonics.n02",
+  "version": 1,
+  "status": "development",
+  "title": "Free-space diffraction and numerical convergence",
+  "course": "computational-photonics",
+  "notebook": "N02_diffraction_convergence.ipynb",
+  "audience": [
+    "undergraduate optics",
+    "research onboarding"
+  ],
+  "prerequisites": [
+    "basic Python",
+    "complex numbers",
+    "introductory optics"
+  ],
+  "environment": {
+    "python": "3.14",
+    "kernel": "python3",
+    "science_dependency": {
+      "name": "photonicslab",
+      "version": "0.6.0a1",
+      "commit": "141258d308b11569b37628c003ace15e385fba3d"
+    },
+    "executor": "numpy-cpu"
+  },
+  "resources": {
+    "gpu_required": false,
+    "credentials_required": false,
+    "grid_max": [
+      384,
+      384
+    ]
+  },
+  "validations": "Rayleigh law, first-principles FFT, boundary and grid convergence",
+  "assessment": "predict → simulate → compare analytical model → explain numerical failure → real bench translation",
+  "limitations": [
+    "coherent monochromatic transverse fields",
+    "ideal thin optics",
+    "periodic sampled windows",
+    "not a quantum-state or full-vector Maxwell model"
+  ],
+  "reading": [
+    "Saleh and Teich, Fundamentals of Photonics",
+    "Goodman, Introduction to Fourier Optics",
+    "Siegman, Lasers",
+    "Mandel and Wolf, Optical Coherence and Quantum Optics"
+  ]
+}
