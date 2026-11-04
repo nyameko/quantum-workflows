@@ -28,3 +28,12 @@ See [README](https://github.com/nyameko/quantum-workflows/blob/main/README.md), 
 ## Guide discovery and support
 
 [Guide integration, issue routing and safe agent retrieval](Guide-assistance.md) · [machine-readable page index](guide-index.json). Neither documentation nor its index grants resource permissions.
+
+
+## Detailed scientific engineering
+
+- [Slurm runner contract](Slurm-runner-contract.md)
+- [Quantum SDK and executor matrix](Quantum-SDK-and-executor-matrix.md)
+- [Research curriculum design](Research-curriculum-design.md)
+- [Science validation and benchmarks](Science-validation-and-benchmarks.md)
+- [Notebook environments and reproducibility](Notebook-environments-and-reproducibility.md)

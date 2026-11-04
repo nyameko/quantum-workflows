@@ -62,11 +62,39 @@
       "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Home"
     },
     {
+      "slug": "Notebook-environments-and-reproducibility",
+      "title": "Notebook environments and reproducibility",
+      "source_path": "docs/wiki/Notebook-environments-and-reproducibility.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Notebook-environments-and-reproducibility.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Notebook-environments-and-reproducibility"
+    },
+    {
+      "slug": "Quantum-SDK-and-executor-matrix",
+      "title": "Quantum SDK and executor matrix",
+      "source_path": "docs/wiki/Quantum-SDK-and-executor-matrix.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Quantum-SDK-and-executor-matrix.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Quantum-SDK-and-executor-matrix"
+    },
+    {
       "slug": "Reference-experiments",
       "title": "Reference experiments",
       "source_path": "docs/wiki/Reference-experiments.md",
       "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Reference-experiments.md",
       "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Reference-experiments"
+    },
+    {
+      "slug": "Research-curriculum-design",
+      "title": "Research curriculum design",
+      "source_path": "docs/wiki/Research-curriculum-design.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Research-curriculum-design.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Research-curriculum-design"
+    },
+    {
+      "slug": "Science-validation-and-benchmarks",
+      "title": "Science validation and benchmarks",
+      "source_path": "docs/wiki/Science-validation-and-benchmarks.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Science-validation-and-benchmarks.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Science-validation-and-benchmarks"
     },
     {
       "slug": "Scientific-provenance",
@@ -81,6 +109,13 @@
       "source_path": "docs/wiki/Security-and-responsible-science.md",
       "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Security-and-responsible-science.md",
       "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Security-and-responsible-science"
+    },
+    {
+      "slug": "Slurm-runner-contract",
+      "title": "Slurm runner contract",
+      "source_path": "docs/wiki/Slurm-runner-contract.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Slurm-runner-contract.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Slurm-runner-contract"
     },
     {
       "slug": "Troubleshooting",

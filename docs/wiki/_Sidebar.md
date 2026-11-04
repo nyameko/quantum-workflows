@@ -11,3 +11,9 @@
 - [Security and responsible science](Security-and-responsible-science.md)
 - [Contributing](Contributing.md)
 - [Guide help and support](Guide-assistance.md)
+**Scientific engineering**
+- [Slurm runner contract](Slurm-runner-contract.md)
+- [Quantum SDK and executor matrix](Quantum-SDK-and-executor-matrix.md)
+- [Research curriculum design](Research-curriculum-design.md)
+- [Science validation and benchmarks](Science-validation-and-benchmarks.md)
+- [Notebook environments and reproducibility](Notebook-environments-and-reproducibility.md)
