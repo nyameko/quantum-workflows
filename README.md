@@ -1,5 +1,8 @@
 # quantum-workflows
 
+> **Documentation:** [Wiki home](docs/wiki/Home.md) · [Getting started](docs/wiki/Getting-started.md) · [Academy](docs/wiki/Academy-and-learning-paths.md) · [Reference experiments](docs/wiki/Reference-experiments.md) · [CPU/GPU/QPU execution](docs/wiki/Execution-environments.md) · [Developer guide](docs/wiki/Developer-guide.md). Reviewable source lives in `docs/wiki/`; [GitHub Wiki publication](docs/WIKI_PUBLISHING.md) is separate.
+
+
 Vendor-neutral reference workflows for **hybrid quantum-classical computing** and
 **quantum-centric supercomputing (QCSC)**.
 

@@ -1,5 +1,8 @@
 # Quick Start
 
+> **Current requirement:** Python **3.14** per `pyproject.toml` (>=3.14,<3.15). In the commands below, `python` must resolve to a Python 3.14 interpreter; preferably create the environment with `python3.14 -m venv .venv`. The larger research academy is a roadmap, not an already installed notebook collection. See [task-based wiki](wiki/Home.md).
+
+
 ## Local package
 
 ```bash
