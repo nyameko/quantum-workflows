@@ -73,11 +73,14 @@ print('Aer devices:', devices)
 assert 'GPU' in devices, 'GPU is not available; check wheel/driver/CUDA compatibility'
 PY
 qw hello --executor aer-gpu --shots 1024 --output results
+python -m ipykernel install --user --name qw-aer-gpu --display-name 'Python (Aer GPU)'
+python -m pip install 'nbclient>=0.10,<1' 'nbformat>=5,<6'
+python scripts/validate_local_gpu_notebook.py --executor aer-gpu --kernel qw-aer-gpu
 ```
 
 **Compatibility is conditional, not guaranteed.** If the GPU wheel has no Python 3.14/platform-compatible build, or CUDA/cuQuantum libraries do not support your GPU generation (including some consumer RTX models), this install will fail. Stop there; use `aer` CPU for the lessons or a verified GPU environment with a matching interpreter and driver. Do not interpret `nvidia-smi` alone as proof that Aer GPU works.
 
-PennyLane Lightning GPU is a **different executor**: in a fresh compatible environment, install `.[notebooks,lightning-gpu]` and verify `qw hello --executor lightning-gpu`. It depends on a compatible PennyLane Lightning GPU and cuQuantum installation; it should not be assumed interchangeable with Aer GPU. The `02-bell-cpu-gpu-qpu.ipynb` notebook allows switching executors after installation. Physical `ibm` and `qrmi` remain **explicitly opt-in** and may require credentials, provider quota, money or institutional allocation.
+PennyLane Lightning GPU is a **different executor**: in a fresh compatible environment, install `.[notebooks,lightning-gpu]`, verify `qw hello --executor lightning-gpu`, register a dedicated `qw-lightning-gpu` ipykernel, then run `python scripts/validate_local_gpu_notebook.py --executor lightning-gpu --kernel qw-lightning-gpu`. It depends on a compatible PennyLane Lightning GPU and cuQuantum installation; it should not be assumed interchangeable with Aer GPU. The `02-bell-cpu-gpu-qpu.ipynb` notebook allows switching executors after installation. Physical `ibm` and `qrmi` remain **explicitly opt-in** and may require credentials, provider quota, money or institutional allocation.
 
 ## 4. Run the Computational Photonics lessons without GPU or CHPC
 
@@ -97,6 +100,6 @@ Photonics N01–N03 use the pinned object-oriented `photonicslab` dependency, no
 | Photonics library import fails | Use the course's pinned PhotonicsLab revision in a separate environment |
 | Real QPU asks for a token | Remain on local `aer`; hardware use is optional and never a precondition |
 
-Record `git rev-parse HEAD`, `python --version`, `python -m pip freeze`, `nvidia-smi` (if GPU), input parameters, seeds, simulator method, result manifests and any physical assumptions. Never commit QPU tokens, personal datasets or large notebook outputs. The CPU notebook validator is automated in CI; **GPU compatibility still requires a live test on a qualifying GPU machine**, and a passing Bell test alone does not establish speedup or scientific accuracy of a larger workflow.
+Record `git rev-parse HEAD`, `python --version`, `python -m pip freeze`, `nvidia-smi` (if GPU), input parameters, seeds, simulator method, result manifests and any physical assumptions. Never commit QPU tokens, personal datasets or large notebook outputs. The CPU notebook validator is automated in CI; the optional GPU notebook validator executes the Bell notebook on the selected dedicated GPU kernel but **still requires a real compatible GPU machine**, and a passing Bell test alone does not establish speedup or scientific accuracy of a larger workflow.
 
 See [notebook reproducibility](Notebook-environments-and-reproducibility.md), [execution environments](Execution-environments.md), [reference experiments](Reference-experiments.md), and [GPU/QPU simulator matrix](Quantum-SDK-and-executor-matrix.md).
