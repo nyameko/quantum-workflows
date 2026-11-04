@@ -10,3 +10,4 @@
 - [Troubleshooting](Troubleshooting.md)
 - [Security and responsible science](Security-and-responsible-science.md)
 - [Contributing](Contributing.md)
+- [Guide help and support](Guide-assistance.md)

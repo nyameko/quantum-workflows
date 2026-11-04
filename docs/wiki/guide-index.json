@@ -1,0 +1,93 @@
+{
+  "schema": "qc-guide-document-index/v1",
+  "repository": "nyameko/quantum-workflows",
+  "source_root": "docs/wiki",
+  "public": true,
+  "description": "Discovery index only; verify source commit, deployment and permissions before use.",
+  "pages": [
+    {
+      "slug": "Academy-and-learning-paths",
+      "title": "Academy and learning paths",
+      "source_path": "docs/wiki/Academy-and-learning-paths.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Academy-and-learning-paths.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Academy-and-learning-paths"
+    },
+    {
+      "slug": "Contributing",
+      "title": "Contributing",
+      "source_path": "docs/wiki/Contributing.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Contributing.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Contributing"
+    },
+    {
+      "slug": "Developer-guide",
+      "title": "Developer guide",
+      "source_path": "docs/wiki/Developer-guide.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Developer-guide.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Developer-guide"
+    },
+    {
+      "slug": "Ecosystem-integration",
+      "title": "Ecosystem integration",
+      "source_path": "docs/wiki/Ecosystem-integration.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Ecosystem-integration.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Ecosystem-integration"
+    },
+    {
+      "slug": "Execution-environments",
+      "title": "Execution environments",
+      "source_path": "docs/wiki/Execution-environments.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Execution-environments.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Execution-environments"
+    },
+    {
+      "slug": "Getting-started",
+      "title": "Getting started",
+      "source_path": "docs/wiki/Getting-started.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Getting-started.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Getting-started"
+    },
+    {
+      "slug": "Guide-assistance",
+      "title": "Guide assistance",
+      "source_path": "docs/wiki/Guide-assistance.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Guide-assistance.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Guide-assistance"
+    },
+    {
+      "slug": "Home",
+      "title": "Home",
+      "source_path": "docs/wiki/Home.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Home.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Home"
+    },
+    {
+      "slug": "Reference-experiments",
+      "title": "Reference experiments",
+      "source_path": "docs/wiki/Reference-experiments.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Reference-experiments.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Reference-experiments"
+    },
+    {
+      "slug": "Scientific-provenance",
+      "title": "Scientific provenance",
+      "source_path": "docs/wiki/Scientific-provenance.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Scientific-provenance.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Scientific-provenance"
+    },
+    {
+      "slug": "Security-and-responsible-science",
+      "title": "Security and responsible science",
+      "source_path": "docs/wiki/Security-and-responsible-science.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Security-and-responsible-science.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Security-and-responsible-science"
+    },
+    {
+      "slug": "Troubleshooting",
+      "title": "Troubleshooting",
+      "source_path": "docs/wiki/Troubleshooting.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/main/docs/wiki/Troubleshooting.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Troubleshooting"
+    }
+  ]
+}

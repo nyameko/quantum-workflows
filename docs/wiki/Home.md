@@ -24,3 +24,7 @@
 The repository contains `qw` reference runners for `cpu-smoke`, `hello` (Bell), `trotter` (four-qubit default transverse-field Ising) and `sqd` (N₂ sample-based diagonalization). It also contains an introductory quantum computing lab and three committed computational photonics notebooks (N01–N03). The extensive planned academy is **not** equivalent to a full implemented collection of notebooks.
 
 See [README](https://github.com/nyameko/quantum-workflows/blob/main/README.md), [scientific architecture](https://github.com/nyameko/quantum-workflows/blob/main/docs/ARCHITECTURE.md), [quick start](https://github.com/nyameko/quantum-workflows/blob/main/docs/QUICK_START.md) and [academy roadmap](https://github.com/nyameko/quantum-workflows/blob/main/docs/MASTER-ACADEMY-AND-RESEARCH-TRACKS.md).
+
+## Guide discovery and support
+
+[Guide integration, issue routing and safe agent retrieval](Guide-assistance.md) · [machine-readable page index](guide-index.json). Neither documentation nor its index grants resource permissions.
