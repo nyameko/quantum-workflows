@@ -5,6 +5,10 @@ It introduces classical bits, a single qubit, superposition, measurement,
 interference, two-qubit entanglement and a coin-flip analogy using Qiskit and
 Qiskit Aer.
 
+## Independent workstation installation
+
+A personal laptop/workstation can run this notebook without a CHPC or Quantum Platform account. Install Python, create a local virtual environment, install `requirements.txt` and `jupyterlab` in that environment, and open `Intro_QC_Demo.ipynb` with its kernel. The full `02-bell-cpu-gpu-qpu.ipynb` lesson additionally requires the `quantum-workflows` Python 3.14 package. Follow [the self-hosted workstation and GPU guide](../../docs/wiki/Standalone-workstation-GPU-and-notebooks.md). GPU and QPU access are not required for beginner CPU lessons.
+
 ## One-time environment setup in Quantum Platform
 
 The Jupyter workbench home is persistent at `/home/research/<username>`.
@@ -68,9 +72,7 @@ PY
 The source SCC notebook contains a cell that calls
 `Statevector.from_instruction(qc0)` after `qc0.measure_all()`. Current
 Qiskit raises a `QiskitError` because measurement introduces classical bits
-and is not a unitary statevector instruction. This is retained as a useful
-discussion point; the following section creates a fresh circuit before
-continuing.
+and is not a unitary statevector instruction. The error is now **caught and explained inside the cell** so a clean top-to-bottom run succeeds; an unmeasured copy of the preparation circuit provides the statevector visualization. This remains a discussion point rather than a hard failure.
 
 ## Platform direction
 

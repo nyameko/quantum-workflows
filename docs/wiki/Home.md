@@ -2,7 +2,7 @@
 
 **Quantum Workflows** is the scientific notebook, runner, curriculum and provenance layer of the hybrid quantum-centric supercomputing environment. It is not the user identity provider, Kubernetes/Slurm scheduler or Agent Control Plane.
 
-**Audience:** first-time students, domain researchers, scientific software engineers, curriculum authors and advanced HPC/QPU users. **Source basis:** 4 November 2026, `main`. Distinguish committed runnable content from staged educational material and the multi-year proposed curriculum.
+**Audience:** first-time students, domain researchers, scientific software engineers, curriculum authors and advanced HPC/QPU users. **Source basis:** versioned development documentation (`dev`); check the linked commit for production claims. Distinguish committed runnable content from staged educational material and the multi-year proposed curriculum.
 
 ## Start here
 
@@ -11,6 +11,7 @@
 | Install and run a first credential-free experiment | [Getting started](Getting-started.md) |
 | Find an education or specialization track | [Academy and learning paths](Academy-and-learning-paths.md) |
 | Run Bell, Ising, SQD and CPU smoke | [Reference experiments](Reference-experiments.md) |
+| Install notebooks on a standalone workstation or GPU PC | [Standalone notebooks and GPU](Standalone-workstation-GPU-and-notebooks.md) |
 | Use notebooks, Slurm, GPU or an authorised QPU | [Execution environments](Execution-environments.md) |
 | Interpret results and reproduce them | [Scientific provenance](Scientific-provenance.md) |
 | Inspect the code and develop new runners | [Developer guide](Developer-guide.md) |

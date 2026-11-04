@@ -3,6 +3,7 @@
 - [Getting started](Getting-started.md)
 - [Academy and learning paths](Academy-and-learning-paths.md)
 - [Reference experiments](Reference-experiments.md)
+- [Standalone workstation and GPU notebooks](Standalone-workstation-GPU-and-notebooks.md)
 - [Execution environments](Execution-environments.md)
 - [Scientific provenance](Scientific-provenance.md)
 - [Ecosystem integration](Ecosystem-integration.md)

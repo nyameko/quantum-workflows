@@ -4,6 +4,8 @@
 
 A notebook is a teaching and interactive scientific interface; a Python virtualenv/kernel is a software environment; a scheduler allocation is a compute resource; a runner image is a versioned execution artifact. These must not be conflated. The current source requires **Python 3.14** for `quantum-workflows` and isolates optional extras such as `ibm`, `sqd`, `lightning-cpu` and `lightning-gpu`.
 
+For a fully independent desktop or GPU server installation (no CHPC account), use [Standalone Jupyter notebooks and GPU](Standalone-workstation-GPU-and-notebooks.md). The introductory Qiskit lesson can also run from its lab-specific requirements without installing the Python 3.14 workflow package. The clean-kernel CPU validator executes both Qiskit notebooks; the existing separate Photonics CI executes N01–N03.
+
 ## Local interactive environment
 
 ```sh
