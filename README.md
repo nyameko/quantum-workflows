@@ -218,6 +218,10 @@ sbatch --gres=qpu:1 --qpu=ibm_resource_name slurm/hello-ibm.sbatch
 The SPANK plugin injects `QRMI_JOB_QPU_RESOURCES` and `QRMI_JOB_QPU_TYPES`; application source does
 not contain a physical backend name or provider token.
 
+## Independent self-hosted notebooks
+
+All committed introductory lessons can run on an independent Linux workstation without Quantum Platform, CHPC, Slurm or paid QPU access. See [Standalone notebooks and a personal GPU workstation](docs/wiki/Standalone-workstation-GPU-and-notebooks.md) for clean Python 3.14 Jupyter setup, optional NVIDIA GPU verification, local CPU smoke tests and the separate pinned PhotonicsLab course. CI executes the introductory Qiskit and Bell CPU notebooks from clean kernels; GPU portability requires live driver/CUDA and Python-wheel validation on the target machine. The notebook collection is an early curriculum subset, not yet the full academy.
+
 ## Introductory lab
 
 The beginner entry point is:

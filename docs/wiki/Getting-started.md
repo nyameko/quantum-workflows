@@ -17,6 +17,8 @@ qw hello --executor aer --shots 1024 --seed 42 --output results
 
 The command creates a result tree, not just printed output. Inspect `manifest.json`, `summary.json` and `data/` in the directory reported by the runner. Preserve the complete result folder for debugging and science review.
 
+**No platform account required:** see [Standalone workstation and GPU notebooks](Standalone-workstation-GPU-and-notebooks.md) for independent Jupyter setup, CUDA compatibility checks and optional GPU execution.
+
 ## First notebook
 
 Open `labs/01-intro-quantum-computing/Intro_QC_Demo.ipynb` using a compatible Jupyter kernel and the notebook requirements. Work through state preparation, measurement, Bell-state correlations and shot statistics. Compare simulation to mathematical expectations rather than treating any one histogram as a theorem.

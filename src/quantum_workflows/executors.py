@@ -47,8 +47,9 @@ def _sample_aer(
     backend = AerSimulator(seed_simulator=seed, **options)
     if gpu and "GPU" not in backend.available_devices():
         raise RuntimeError(
-            "Qiskit Aer GPU is unavailable. Install qiskit-aer-gpu on a CUDA-enabled "
-            "A100/H200 runner and verify GPU visibility; CPU fallback is explicit (--executor aer)."
+            "Qiskit Aer GPU is unavailable. Install qiskit-aer-gpu in a compatible CUDA-enabled "
+            "NVIDIA workstation or approved runner and verify GPU visibility; "
+            "CPU fallback is explicit (--executor aer)."
         )
     isa = transpile(list(circuits), backend=backend, optimization_level=1, seed_transpiler=seed)
     job = backend.run(isa, shots=shots)
