@@ -23,8 +23,10 @@ def test_every_basis_energy_agrees_with_independent_binary_objective():
     problem = reference_problem()
     for bits in product((0, 1), repeat=3):
         assert np.isclose(
-            objective(problem, bits), ising_energy(problem, bits),
-            atol=1e-12, rtol=0,
+            objective(problem, bits),
+            ising_energy(problem, bits),
+            atol=1e-12,
+            rtol=0,
         )
 
 
@@ -72,8 +74,11 @@ def test_reject_nonbinary_holding():
 def test_actual_pennylane_lightning_cpu_analytic_reference(tmp_path):
     pytest.importorskip("pennylane")
     summary, directory = run_lightning_cpu(
-        problem=reference_problem(), output=tmp_path, seed=7,
-        restarts=4, maxiter=180,
+        problem=reference_problem(),
+        output=tmp_path,
+        seed=7,
+        restarts=4,
+        maxiter=180,
     )
     assert summary["backend"] == "lightning.qubit"
     assert summary["shots"] is None
