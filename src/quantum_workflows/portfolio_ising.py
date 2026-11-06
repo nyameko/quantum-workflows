@@ -86,7 +86,6 @@ def ising_coefficients(
     the diagonal covariance contributes to the linear QUBO terms.
     """
     returns, covariance = _validated(problem)
-    n = returns.size
     linear = (
         -returns
         + problem.risk_weight * np.diag(covariance)
