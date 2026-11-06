@@ -30,6 +30,19 @@ jobs:
       - run: pytest -m 'not hardware' --cov=quantum_workflows --cov-report=term-missing
       - run: qw hello --executor aer --shots 256 --output /tmp/qw-results
 
+
+  portfolio-lightning-cpu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+          cache: pip
+      - run: python -m pip install -e '.[dev,lightning-cpu]'
+      - name: Run real PennyLane lightning.qubit numerical acceptance
+        run: pytest -q tests/test_portfolio_ising.py
+
   sqd-smoke:
     runs-on: ubuntu-latest
     steps:
