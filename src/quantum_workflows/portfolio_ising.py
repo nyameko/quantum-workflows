@@ -128,7 +128,11 @@ def exact_reference(problem: PortfolioProblem) -> dict[str, Any]:
 
 
 def run_lightning_cpu(
-    *, problem: PortfolioProblem, output: Path, seed: int = 7, restarts: int = 4,
+    *,
+    problem: PortfolioProblem,
+    output: Path,
+    seed: int = 7,
+    restarts: int = 4,
     maxiter: int = 180,
 ) -> tuple[dict[str, Any], Path]:
     """Optimize a local analytic VQE ansatz and retain reference/manifest.
@@ -226,8 +230,11 @@ def run_lightning_cpu(
             "qpu_executed": False,
         }
         artifacts.set_quantum_metadata(
-            provider="local", backend="lightning.qubit", qubits=int(returns.size),
-            shots=None, analytic=True,
+            provider="local",
+            backend="lightning.qubit",
+            qubits=int(returns.size),
+            shots=None,
+            analytic=True,
         )
         artifacts.write_json("reference_spectrum.json", reference, data=True)
         artifacts.finish(summary)
