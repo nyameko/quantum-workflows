@@ -22,8 +22,6 @@ def test_eight_notebooks_are_valid_and_python_compiles():
 
 
 def test_researcher_ssh_submission_is_identity_bound():
-    from pathlib import Path
-
     source = (LABS / "01-first-gpu-slurm-batch.ipynb").read_text()
     assert "SLURM_LOGIN_HOST" in source
     assert "SLURM_RESEARCHER_SSH_KEY" in source
