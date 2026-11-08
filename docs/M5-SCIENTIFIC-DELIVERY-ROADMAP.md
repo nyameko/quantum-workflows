@@ -76,6 +76,16 @@ the provider and Slurm retain authoritative scheduling/job states.
 | V1 Platform workflow | Authorized submit → durable status/results, credentials, telemetry | **Core integrated M5 acceptance** |
 | V2 Intelligent QCSC | Evidence-based resource/model/workflow optimisation | Subsequent research, not MVP blocker |
 
+## Batch-first access pilot: P0–P6 (new first-user milestone, 8 November 2026)
+
+This access-first sequence operationalises the existing M5 scientific ambition without discarding the prior domain-specific M5a–M5e Lightning/Ising/finance/chemistry science roadmap below.
+
+> **Scientific preparation is cheap; expensive execution is scheduled.**
+
+**P0** replace the privileged helper with approved native *per-researcher* Slurm submit/status/cancel; deny cross-user access and preserve existing CPU service. **P1** isolate approved ACE A100 and Axis H200 science GPUs through authoritative GRES/cgroups/accounting, excluding inference allocations. **P2** run first Aer GPU batch on a real A100 from a small KubeSpawner CPU Jupyter notebook, capture scientific validation and `sacct` usage. **P3** repeat independently on the remote Axis H200 after explicit input/output staging and checksum reconciliation. **P4** expose programme-scoped, site-qualified offering/status/results in the **existing** Quantum Platform Runs UI (no redesign). **P5** qualify distinct Lightning, Cirq/qsim/cuQuantum, IQM and Pulser images and modality-correct numerical tests. **P6** allow ACP Guide to tutor, inspect authorized progress and interpret returned science, without becoming scheduler.
+
+These gates must not be marked complete based on source alone or on the existing CPU-only smoke test. The first acceptance demonstration is notebook opened → GPU batch submitted → browser/notebook closed → result and GPU usage observed after return → H200 repetition. See [detailed batch-first M5 plan](M5-BATCH-FIRST-SIMULATOR-PATH.md) and [eight short lessons](../labs/01-intro-quantum-computing/batch-first/README.md). The Lightning M5a–M5e work below remains a separate scientific correctness programme; the P0–P3 path validates access and GPU utilisation first.
+
 ## E. Concrete implementation gates (ordered, evidence-based)
 
 ### M5a — One reproducible CPU scientific reference
