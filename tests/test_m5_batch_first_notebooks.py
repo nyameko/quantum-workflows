@@ -22,7 +22,12 @@ def test_eight_notebooks_are_valid_and_python_compiles():
 
 
 def test_researcher_ssh_submission_is_identity_bound():
-    source = (LABS / "01-first-gpu-slurm-batch.ipynb").read_text()
+    notebook = json.loads((LABS / "01-first-gpu-slurm-batch.ipynb").read_text())
+    source = "\n".join(
+        "".join(cell["source"])
+        for cell in notebook["cells"]
+        if cell["cell_type"] == "code"
+    )
     assert "SLURM_LOGIN_HOST" in source
     assert "SLURM_RESEARCHER_SSH_KEY" in source
     assert "StrictHostKeyChecking=yes" in source
