@@ -5,10 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-NOTEBOOK = (
-    Path(__file__).resolve().parents[1]
-    / "labs/06-facility-acceptance/00-backend-readiness.ipynb"
-)
+NOTEBOOK = Path(__file__).resolve().parents[1] / "labs/06-facility-acceptance/00-backend-readiness.ipynb"
 
 
 def _notebook_cells():
@@ -19,11 +16,7 @@ def _notebook_cells():
 
 def test_readiness_notebook_defaults_are_non_consuming() -> None:
     cells = _notebook_cells()
-    source = "\n".join(
-        "".join(cell["source"])
-        for cell in cells
-        if cell["cell_type"] == "code"
-    )
+    source = "\n".join("".join(cell["source"]) for cell in cells if cell["cell_type"] == "code")
     assert "ENABLE_GPU_SMOKES = False" in source
     assert "ENABLE_IBM_DISCOVERY = False" in source
     assert "WRITE_REPORT = False" in source
