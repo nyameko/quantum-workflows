@@ -29,7 +29,7 @@ def test_researcher_ssh_submission_is_identity_bound():
     assert "IdentitiesOnly=yes" in source
     assert "RESEARCH_USER" in source
     assert "shlex.join(args)" in source
-    assert "f\\"{RESEARCH_USER}@{SLURM_LOGIN_HOST}\\"" in source
+    assert 'f"{RESEARCH_USER}@{SLURM_LOGIN_HOST}"' in source
     assert "subprocess.run(" in source
 
 
