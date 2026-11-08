@@ -21,6 +21,19 @@ def test_eight_notebooks_are_valid_and_python_compiles():
                 compile("".join(cell["source"]), path.name, "exec")
 
 
+def test_researcher_ssh_submission_is_identity_bound():
+    from pathlib import Path
+
+    source = (LABS / "01-first-gpu-slurm-batch.ipynb").read_text()
+    assert "SLURM_LOGIN_HOST" in source
+    assert "SLURM_RESEARCHER_SSH_KEY" in source
+    assert "StrictHostKeyChecking=yes" in source
+    assert "IdentitiesOnly=yes" in source
+    assert "RESEARCH_USER" in source
+    assert "shlex.join(args)" in source
+    assert "runuser" not in source.split("def slurm_command")[1].split("print(")[0]
+
+
 def test_batch_template_uses_native_slurm_and_no_privileged_impersonation():
     content = (HERE / "slurm/aer-gpu.sbatch").read_text()
     assert "--gres=gpu:1" in content
