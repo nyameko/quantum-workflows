@@ -5,7 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-NOTEBOOK = Path(__file__).resolve().parents[1] / "labs/06-facility-acceptance/00-backend-readiness.ipynb"
+ROOT = Path(__file__).resolve().parents[1]
+NOTEBOOK = ROOT / "labs/06-facility-acceptance/00-backend-readiness.ipynb"
 
 
 def _notebook_cells():
