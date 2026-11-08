@@ -29,7 +29,8 @@ def test_researcher_ssh_submission_is_identity_bound():
     assert "IdentitiesOnly=yes" in source
     assert "RESEARCH_USER" in source
     assert "shlex.join(args)" in source
-    assert "runuser" not in source.split("def slurm_command")[1].split("print(")[0]
+    assert "f\\"{RESEARCH_USER}@{SLURM_LOGIN_HOST}\\"" in source
+    assert "subprocess.run(" in source
 
 
 def test_batch_template_uses_native_slurm_and_no_privileged_impersonation():
