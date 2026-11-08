@@ -13,6 +13,13 @@
       "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Academy-and-learning-paths"
     },
     {
+      "slug": "Batch-first-simulator-academy",
+      "title": "Batch first simulator academy",
+      "source_path": "docs/wiki/Batch-first-simulator-academy.md",
+      "source_url": "https://github.com/nyameko/quantum-workflows/blob/dev/docs/wiki/Batch-first-simulator-academy.md",
+      "wiki_url": "https://github.com/nyameko/quantum-workflows/wiki/Batch-first-simulator-academy"
+    },
+    {
       "slug": "Contributing",
       "title": "Contributing",
       "source_path": "docs/wiki/Contributing.md",

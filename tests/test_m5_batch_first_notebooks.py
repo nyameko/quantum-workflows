@@ -1,4 +1,5 @@
 """Validate batch-first notebook source without installing vendor SDKs or using GPUs."""
+
 import json
 from pathlib import Path
 
