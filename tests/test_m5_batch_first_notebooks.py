@@ -13,6 +13,7 @@ def test_eight_notebooks_are_valid_and_python_compiles():
     for path in books:
         doc = json.loads(path.read_text())
         assert doc["nbformat"] == 4
+        assert len({cell["id"] for cell in doc["cells"]}) == len(doc["cells"])
         assert doc["cells"][0]["cell_type"] == "markdown"
         for cell in doc["cells"]:
             if cell["cell_type"] == "code":

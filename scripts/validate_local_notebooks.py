@@ -18,6 +18,9 @@ ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOKS = (
     "labs/01-intro-quantum-computing/Intro_QC_Demo.ipynb",
     "labs/01-intro-quantum-computing/02-bell-cpu-gpu-qpu.ipynb",
+    "labs/01-intro-quantum-computing/batch-first/00-first-quantum-circuit.ipynb",
+    "labs/01-intro-quantum-computing/batch-first/02-quantum-simulation-performance.ipynb",
+    "labs/01-intro-quantum-computing/batch-first/07-real-quantum-hardware.ipynb",
 )
 
 
