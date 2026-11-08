@@ -135,6 +135,25 @@ Every canonical lab/notebook should state:
 - known limitations;
 - expected cleanup.
 
+## Batch-first simulator academy (M5 entry sequence)
+
+> **Scientific preparation is cheap; expensive execution is scheduled.**
+
+The short [00–07 simulator academy](../labs/01-intro-quantum-computing/batch-first/README.md) is the recommended *first-use* path alongside the existing comprehensive Bell-state notebook; it does **not** replace the established classical HPC track or the chemistry/finance/nuclear/photonics research tracks.
+
+| Lab | Method | Default and advanced path |
+| --- | --- | --- |
+| 00 | Bell circuit | Qiskit Aer CPU, small JupyterHub workbench |
+| 01 | First GPU Slurm batch | authenticated native `sbatch` → Aer GPU A100/H200 |
+| 02 | Quantum simulation performance | `16 * 2**n` bytes complex128 statevector storage; CPU then scheduled GPU benchmark |
+| 03 | PennyLane Lightning | lightning.qubit gradients → validated lightning.gpu image |
+| 04 | Cirq/qsim/cuQuantum | Cirq/qsim CPU → separate CUDA/cuStateVec/cuTensorNet GPU runners |
+| 05 | IQM architectures | local IQM fake backend (no QPU expenditure) |
+| 06 | Pasqal neutral atoms | Pulser/Qutip CPU → separately validated emu-sv/emu-mps |
+| 07 | Real quantum hardware | Aer baseline → **explicitly approved** remote QPU, with quota and provenance |
+
+**Concept rule:** a development framework, a simulator backend, a CPU/GPU execution resource and a physical QPU provider are distinct. Real device emulation requires modality-specific assumptions and scientific checks. Native scheduler jobs survive the Jupyter kernel; GPU access is never held simply for reading or editing.
+
 ## Persistent-agent integration
 
 The future Agent Control Plane should guide users through the same material rather than replacing it.
